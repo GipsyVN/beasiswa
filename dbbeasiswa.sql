@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2023 at 04:45 PM
+-- Generation Time: Dec 13, 2023 at 12:45 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -85,6 +85,15 @@ CREATE TABLE `perangkingan` (
   `preferensi` decimal(4,3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
+--
+-- Dumping data for table `perangkingan`
+--
+
+INSERT INTO `perangkingan` (`idperangkingan`, `iddaftar`, `n_pendapatan`, `n_ipk`, `n_saudara`, `preferensi`) VALUES
+(11, 4, 1.000, 1.000, 1.000, 1.000),
+(12, 2, 0.010, 1.000, 0.500, 0.405),
+(13, 6, 1.000, 0.500, 1.000, 0.850);
+
 -- --------------------------------------------------------
 
 --
@@ -147,7 +156,7 @@ ALTER TABLE `pendaftaran`
 -- AUTO_INCREMENT for table `perangkingan`
 --
 ALTER TABLE `perangkingan`
-  MODIFY `idperangkingan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idperangkingan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
