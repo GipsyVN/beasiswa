@@ -1,5 +1,6 @@
 <?php
 date_default_timezone_set("Asia/Jakarta");
+session_start();
 require "config.php";
 ?>
 
@@ -18,15 +19,22 @@ require "config.php";
 </head>
 <body>
 
+    <!-- Cek Status Login -->
+     <?php 
+        if($_SESSION['status']!="y"){
+            header("Location:login.php");
+    }
+    ?>
     <!-- Tampilan Menu -->
     <nav class="navbar navbar-dark bg-primary border navbar-expand-sm fixed-top">
         <a class="navbar-brand" href="#">PENDAFTARAN BEASISWA</a>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a class="nav-link" href="index.php"><i class="fas fa-home"></i> Home </a></li>
-            <li class="nav-item active"><a class="nav-link" href="?page=mahasiswa"><i class="fas fa-user-graduate"></i> Data Mahasiswa </a></li>
+            <li class="nav-item active"><a class="nav-link" href="?page=user"><i class="fas fa-user"></i> User </a></li>
+            <li class="nav-item active"><a class="nav-link" href="?page=mahasiswa"><i class="fas fa-user-graduate"></i> Mahasiswa </a></li>
             <li class="nav-item active"><a class="nav-link" href="?page=pendaftaran"><i class="fas fa-address-book"></i> Pendaftaran </a></li>
             <li class="nav-item active"><a class="nav-link" href="?page=perangkingan&thn="><i class="fas fa-book-reader"></i> Perengkingan </a></li>
-            <li class="nav-item active"><a class="nav-link" href="?page="><i class="fas fa-door-closed"></i> Logout </a></li>
+            <li class="nav-item active"><a class="nav-link" href="?page=logout"><i class="fas fa-door-closed"></i> Logout </a></li>
         </ul>
     </nav>
 
@@ -65,8 +73,21 @@ require "config.php";
             if ($action==""){
                 include "perangkingan.php";
             }
+        }elseif ($page=="user"){
+            if ($action==""){
+                include "tampil_user.php";
+            }elseif($action == "tambah"){
+                include "tambah_user.php";
+            }elseif($action == "update"){
+                include "update_user.php";
+            }
+            else{
+                include "hapus_user.php";
+            }
         }else{
-
+            if ($action==""){
+                include "logout.php";
+            }
         }
         ?>
     </div>
@@ -76,16 +97,16 @@ require "config.php";
     <script src="assets/js/all.js"></script>
     <script src="assets/js/datatables.min.js"></script>
     <script>
-       $(document).ready(function () {
-           $('#myTable').dataTable();
-       });
-   </script>
+     $(document).ready(function () {
+         $('#myTable').dataTable();
+     });
+ </script>
 
-   <script src="assets/js/chosen.jquery.min.js"></script>
-   <script>
-     $(function() {
-       $('.chosen').chosen();
-   });
+ <script src="assets/js/chosen.jquery.min.js"></script>
+ <script>
+   $(function() {
+     $('.chosen').chosen();
+ });
 </script>
 
 </body>
