@@ -70,8 +70,9 @@ require "config.php";
             include "tambah_pendaftaran.php";
         }elseif($action == "update"){
             include "update_pendaftaran.php";
-        }
-        else{
+        }elseif($action == "verif"){
+            include "verifikasi.php";
+        }else{
             include "hapus_pendaftaran.php";
         }
     }elseif ($page=="perangkingan"){

@@ -1,7 +1,9 @@
 <div class="card">
 	<div class="card-header bg-primary text-white border-dark"><strong>Data Pendaftaran</strong></div>
 	<div class="card-body">
-		<a class="btn btn-primary mb-2" href="?page=pendaftaran&action=tambah">Tambah</a>
+		<?php if($_SESSION['level'] == "Mahasiswa"): ?>
+			<a class="btn btn-primary mb-2" href="?page=pendaftaran&action=tambah">Tambah</a>
+		<?php endif ?>
 		<table class="table table-bordered" id="myTable">
 			<thead>
 				<tr>
@@ -19,7 +21,12 @@
 			<tbody>
 				<!-- letakkan proses menampilkan disini -->
 				<?php
-				$sql = "SELECT pendaftaran.iddaftar,pendaftaran.tgldaftar,pendaftaran.tahun,pendaftaran.nim,mahasiswa.nama_mahasiswa,pendaftaran.pendapatan_ortu,pendaftaran.ipk,pendaftaran.jml_saudara FROM mahasiswa INNER JOIN pendaftaran ON mahasiswa.nim = pendaftaran.nim ORDER BY iddaftar ASC";
+				if($_SESSION['level'] == "Admin"){
+					$sql = "SELECT pendaftaran.iddaftar,pendaftaran.tgldaftar,pendaftaran.tahun,pendaftaran.nim,mahasiswa.nama_mahasiswa,pendaftaran.pendapatan_ortu,pendaftaran.ipk,pendaftaran.jml_saudara FROM mahasiswa INNER JOIN pendaftaran ON mahasiswa.nim = pendaftaran.nim ORDER BY iddaftar ASC";
+				}else{
+					$nim = $_SESSION['username'];
+					$sql = "SELECT pendaftaran.iddaftar,pendaftaran.tgldaftar,pendaftaran.tahun,pendaftaran.nim,mahasiswa.nama_mahasiswa,pendaftaran.pendapatan_ortu,pendaftaran.ipk,pendaftaran.jml_saudara FROM mahasiswa INNER JOIN pendaftaran ON mahasiswa.nim = pendaftaran.nim WHERE pendaftaran.nim = '$nim' ORDER BY iddaftar ASC";
+				}
 				$result = $conn->query($sql);
 				$i = 1;
 				while($row = $result->fetch_assoc()) {
@@ -34,9 +41,17 @@
 						<td><?php echo $row['ipk']; ?></td>
 						<td><?php echo $row['jml_saudara']; ?></td>
 						<td>
-							<a class="btn btn-warning" href="?page=pendaftaran&action=update&id=<?php echo $row['iddaftar']; ?>">
-								<span class="fas fa-edit"></span>
-							</a>
+
+							
+							<?php if($_SESSION['level'] == "Admin"){ ?>
+								<a class="btn btn-warning" href="?page=pendaftaran&action=verif&id=<?php echo $row['iddaftar']; ?>">
+									<span class="fas fa-edit"></span>
+								</a>
+							<?php }else{ ?>
+								<a class="btn btn-warning" href="?page=pendaftaran&action=update&id=<?php echo $row['iddaftar']; ?>">
+									<span class="fas fa-edit"></span>
+								</a>
+							<?php } ?>
 							<a onclick="return confirm('Yakin menghapus data ini ?')" class="btn btn-danger" href="?page=pendaftaran&action=hapus&id=<?php echo $row['iddaftar']; ?>">
 								<span class="fas fa-times"></span>
 							</a>

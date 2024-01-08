@@ -4,28 +4,31 @@ if(isset($_POST['simpan'])){
 
 	// ambil data dari input
 	$id = "";
-    $nim=$_POST['nim'];
-    $nama=$_POST['nama'];
-    $alamat=$_POST['alamat'];
-    $telp=$_POST['telp'];
+	$nim=$_POST['nim'];
+	$nama=$_POST['nama'];
+	$alamat=$_POST['alamat'];
+	$telp=$_POST['telp'];
+	$tanggal=$_POST['tgl_lahir'];
+	$pass = md5(date("Ymd", strtotime($tanggal)));
 	
     // validasi
-    $sql = "SELECT * FROM mahasiswa WHERE nim='$nim'";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        ?>
-            <div class="alert alert-danger alert-dismissible fade show">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>NIM Sudah Didaftarkan</strong>
-            </div>
-        <?php
-    }else{
+	$sql = "SELECT * FROM mahasiswa WHERE nim='$nim'";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+		?>
+		<div class="alert alert-danger alert-dismissible fade show">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong>NIM Sudah Didaftarkan</strong>
+		</div>
+		<?php
+	}else{
 	//proses simpan
-        $sql = "INSERT INTO mahasiswa VALUES ('$id', '$nim','$nama','$alamat', '$telp')";
-        if ($conn->query($sql) === TRUE) {
-            header("Location:?page=mahasiswa");
-        }
-    }
+		$sql = "INSERT INTO mahasiswa VALUES ('$id', '$nim','$nama','$tanggal','$alamat', '$telp')";
+		$sql1 = "INSERT INTO users VALUES ('$id', '$nim','$pass','Mahasiswa')";
+		if ($conn->query($sql) === TRUE && $conn->query($sql1) === TRUE) {
+			header("Location:?page=mahasiswa");
+		}
+	}
 }
 ?>
 
@@ -44,6 +47,10 @@ if(isset($_POST['simpan'])){
 						<div class="form-group">
 							<label for="">Nama Mahasiswa</label>
 							<input type="text" class="form-control" name="nama" maxlength="100" required>
+						</div>
+						<div class="form-group">
+							<label for="">Tanggal Lahir</label>
+							<input type="date" class="form-control" name="tgl_lahir" maxlength="100" required>
 						</div>
 						<div class="form-group">
 							<label for="">Alamat</label>

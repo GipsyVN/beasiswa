@@ -29,7 +29,7 @@ $row = $result->fetch_assoc();
                 <div class="card">
                     <div class="card-header bg-primary text-white border-dark"><strong>UBAH DATA PENDAFTARAN</strong></div>
                     <div class="card-body">
-                     <div class="form-group">
+                       <div class="form-group">
                         <label for="">Tahun</label>
                         <select class="form-control chosen" data-placeholder="Pilih Tahun" name="tahun">
                             <?php for($i = date("Y"); $i >= 2018; $i--) : ?>

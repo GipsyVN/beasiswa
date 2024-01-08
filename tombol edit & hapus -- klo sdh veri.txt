@@ -1,0 +1,27 @@
+tombol edit & hapus --> klo sdh verif --> disable
+jika admin --> tampilkan semua pendaftar
+jika user --> hanya yang didaftar oleh user
+
+jenis beasiswa
+Tahun
+Nama mahasiswa
+NIM
+nik
+no kk
+tempat lahir
+tanggal lahir
+jenis kelamin
+fakultas
+program studi
+semester
+ipk
+golongan darah
+agama
+no hp
+alamat
+pendapatan
+jumlah
+
+SELECT pendaftaran.iddaftar,pendaftaran.tgldaftar,pendaftaran.tahun,pendaftaran.nim,mahasiswa.nama_mahasiswa,pendaftaran.pendapatan_ortu,pendaftaran.ipk,pendaftaran.jml_saudara FROM mahasiswa INNER JOIN pendaftaran ON mahasiswa.nim = pendaftaran.nim ORDER BY iddaftar ASC
+
+SELECT pendaftaran.jenis_beasiswa,pendaftaran.tahun,mahasiswa.nama_mahasiswa,pendaftaran.nim,pendaftaran.nik,pendaftaran.no_kk,pendaftaran.tempat_lahir,mahasiswa.tanggal_lahir,pendaftaran.jenis_kelamin,pendaftaran.fakultas,pendaftaran.program_studi,pendaftaran.semester,pendaftaran.ipk,pendaftaran.golongan_darah,pendaftaran.agama,mahasiswa.telp,pendaftaran.email,mahasiswa.alamat,pendaftaran.pendapatan_ortu,pendaftaran.jml_saudara FROM mahasiswa INNER JOIN pendaftaran ON mahasiswa.nim = pendaftaran.nim ORDER BY iddaftar ASC

@@ -3,27 +3,27 @@
 if(isset($_POST['simpan'])){
 
 	// ambil data dari input
-    $username=$_POST['username'];
-    $pass=md5($_POST['pass']);
-    $level=$_POST['level'];
+	$username=$_POST['username'];
+	$pass=md5($_POST['pass']);
+	$level=$_POST['level'];
 	
     // validasi
-    $sql = "SELECT * FROM users WHERE username='$username'";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        ?>
-            <div class="alert alert-danger alert-dismissible fade show">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Username Sudah Digunakan</strong>
-            </div>
-        <?php
-    }else{
+	$sql = "SELECT * FROM users WHERE username='$username'";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+		?>
+		<div class="alert alert-danger alert-dismissible fade show">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong>Username Sudah Digunakan</strong>
+		</div>
+		<?php
+	}else{
 	//proses simpan
-        $sql = "INSERT INTO users VALUES (Null, '$username','$pass','$level')";
-        if ($conn->query($sql) === TRUE) {
-            header("Location:?page=user");
-        }
-    }
+		$sql = "INSERT INTO users VALUES (Null, '$username','$pass','$level')";
+		if ($conn->query($sql) === TRUE) {
+			header("Location:?page=user");
+		}
+	}
 }
 ?>
 

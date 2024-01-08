@@ -8,9 +8,10 @@
 					<th width="80">No</th>
 					<th width="100">NIM</th>
 					<th width="200">Nama Mahasiswa</th>
+					<th width="120">Tanggal Lahir</th>
 					<th width="300">Alamat</th>
-					<th width="200">No. Telp</th>
-					<th width="80"></th>
+					<th width="80">No. Telp</th>
+					<th width="100"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -25,6 +26,7 @@
 						<td><?php echo $i; ?></td>
 						<td><?php echo $row['nim']; ?></td>
 						<td><?php echo $row['nama_mahasiswa']; ?></td>
+						<td><?php echo $row['tanggal_lahir']; ?></td>
 						<td><?php echo $row['alamat']; ?></td>
 						<td><?php echo $row['telp']; ?></td>
 						<td>
