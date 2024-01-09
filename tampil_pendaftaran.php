@@ -49,6 +49,7 @@
 								</a>
 								<a onclick="return confirm('Yakin menghapus data ini ?')" class="btn btn-danger" href="?page=pendaftaran&action=hapus&id=<?php echo $row['iddaftar']; ?>">
 									<span class="fas fa-times"></span>
+								</a>
 							<?php }else{ ?>
 								<?php if($row['verifikasi'] == "Terverifikasi"){ ?>
 									<a class="btn btn-warning" disabled>
