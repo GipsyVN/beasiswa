@@ -32,14 +32,10 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <title>Login</title>
 </head>
 
 <body>
-
-
-
     <section>
         <form method="POST">
             <h1>Login</h1>
@@ -49,19 +45,32 @@ $conn->close();
                 <label>Username</label>
             </div>
             <div class="inputbox">
-                <ion-icon name="lock-closed-outline"></ion-icon>
-                <input type="password" name="pass" autocomplete="off" required>
+                <ion-icon name="lock-closed-outline" id="passwordBox"></ion-icon>
+                <input type="password" name="pass" id="password" autocomplete="off" required>
                 <label>Password</label>
             </div>
+
             <button type="submit" name="submit" value="Login">Log in</button>
         </form>
     </section>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="assets/js/jquery-3.7.0.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
 
-    <!-- validasi login gagal, letakkan disini -->
+    <script type="text/javascript">
+        const passwordInput = document.getElementById('password');
+        const showPasswordIcon = document.getElementById('passwordBox');
+
+        showPasswordIcon.addEventListener('click', () => {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        });
+    </script>
+
+
+    <!-- validasi login gagal -->
     <?php 
     if(isset($_GET['msg'])){
         if($_GET['msg'] == "n"){
