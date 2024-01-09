@@ -3,7 +3,6 @@
 if(isset($_POST['simpan'])){
 
 	// ambil data dari input
-	$id = "";
 	$nim=$_POST['nim'];
 	$nama=$_POST['nama'];
 	$alamat=$_POST['alamat'];
@@ -22,9 +21,9 @@ if(isset($_POST['simpan'])){
 		</div>
 		<?php
 	}else{
-	//proses simpan
-		$sql = "INSERT INTO mahasiswa VALUES ('$id', '$nim','$nama','$tanggal','$alamat', '$telp')";
-		$sql1 = "INSERT INTO users VALUES ('$id', '$nim','$pass','Mahasiswa')";
+		//proses simpan
+		$sql = "INSERT INTO mahasiswa VALUES (Null, '$nim','$nama','$tanggal','$alamat', '$telp')";
+		$sql1 = "INSERT INTO users VALUES (Null, '$nim','$pass','Mahasiswa')";
 		if ($conn->query($sql) === TRUE && $conn->query($sql1) === TRUE) {
 			header("Location:?page=mahasiswa");
 		}
@@ -44,18 +43,22 @@ if(isset($_POST['simpan'])){
 							<label for="">NIM</label>
 							<input type="text" class="form-control" name="nim" maxlength="10" required>
 						</div>
+
 						<div class="form-group">
 							<label for="">Nama Mahasiswa</label>
 							<input type="text" class="form-control" name="nama" maxlength="100" required>
 						</div>
+
 						<div class="form-group">
 							<label for="">Tanggal Lahir</label>
 							<input type="date" class="form-control" name="tgl_lahir" maxlength="100" required>
 						</div>
+
 						<div class="form-group">
 							<label for="">Alamat</label>
 							<input type="text" class="form-control" name="alamat" maxlength="100" required>
 						</div>
+						
 						<div class="form-group">
 							<label for="">No. Telp</label>
 							<input type="text" class="form-control" name="telp" maxlength="15" required>

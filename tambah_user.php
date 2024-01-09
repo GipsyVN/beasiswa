@@ -39,10 +39,12 @@ if(isset($_POST['simpan'])){
 							<label for="">Username</label>
 							<input type="text" class="form-control" name="username" maxlength="20" required>
 						</div>
+
 						<div class="form-group">
 							<label for="">Password</label>
 							<input type="password" class="form-control" name="pass" maxlength="100" required>
 						</div>
+
 						<div class="form-group">
 							<label for="">Level</label>
 							<select class="form-control chosen" data-placeholder="Pilih Level" name="level">
@@ -51,6 +53,7 @@ if(isset($_POST['simpan'])){
 								<option value="Mahasiswa">Mahasiswa</option>
 							</select>
 						</div>
+
 						<input class="btn btn-primary" type="submit" name="simpan" value="Simpan">
 						<a class="btn btn-danger" href="?page=user">Batal</a>
 

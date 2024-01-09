@@ -7,7 +7,6 @@ $row = $result->fetch_assoc();
 if(isset($_POST['simpan'])){
 
 	// ambil data dari input
-	$id = "";
 	$jb = $_POST['jb'];
 	$tgl = date("Y-m-d");
 	$tahun=$_POST['tahun'];
@@ -37,8 +36,8 @@ if(isset($_POST['simpan'])){
 		</div>
 		<?php
 	}else{
-	//proses simpan
-		$sql = "INSERT INTO pendaftaran VALUES ('$id','$jb', '$tgl','$tahun','$nim','$nik','$kk','$tmp_lahir','$jk','$fakultas','$prodi','$semester','$golongan','$agama','$email','$pendapatan','$ipk','$saudara', 'Belum')";
+		//proses simpan
+		$sql = "INSERT INTO pendaftaran VALUES (Null,'$jb', '$tgl','$tahun','$nim','$nik','$kk','$tmp_lahir','$jk','$fakultas','$prodi','$semester','$golongan','$agama','$email','$pendapatan','$ipk','$saudara', 'Belum')";
 		if ($conn->query($sql) === TRUE) {
 			header("Location:?page=pendaftaran");
 		}
@@ -59,8 +58,8 @@ if(isset($_POST['simpan'])){
 							<select class="form-control chosen" data-placeholder="Pilih Jenis Beasiswa" name="jb">
 								<option value=""></option>
 								<option value="Prestasi">Prestasi</option>
-								<option value="Kurang_mampu">Kurang mampu</option>
-								<option value="Tugas_akhir">Tugas akhir</option>
+								<option value="Kurang_Mampu">Kurang Mampu</option>
+								<option value="Tugas_Akhir">Tugas Akhir</option>
 							</select>
 						</div>
 
@@ -73,6 +72,7 @@ if(isset($_POST['simpan'])){
 							<label for="">Nama Mahasiswa</label>
 							<input type="text" class="form-control" value= "<?php echo $row['nama_mahasiswa']; ?>" name="nama" readonly>
 						</div>
+
 						<div class="form-group">
 							<label for="">NIM</label>
 							<input type="text" class="form-control" value= "<?php echo $nim; ?>" name="nim" readonly>
@@ -81,14 +81,17 @@ if(isset($_POST['simpan'])){
 							<label for="">NIK</label>
 							<input type="number" class="form-control" name="nik" min="0000000000000000" max="9999999999999999" required>
 						</div>
+
 						<div class="form-group">
 							<label for="">Nomor KK</label>
 							<input type="number" class="form-control" name="nomor_kk" min="0000000000000000" max="9999999999999999" required>
 						</div>
+
 						<div class="form-group">
 							<label for="">Tempat Lahir</label>
 							<input type="text" class="form-control" name="tp_lahir" required>
 						</div>
+
 						<div class="form-group">
 							<label for="">Tanggal Lahir </label>
 							<input type="text" class="form-control" value= "<?php echo $row['tanggal_lahir']; ?>" name="tgl_lahir" readonly>
@@ -102,14 +105,17 @@ if(isset($_POST['simpan'])){
 								<option value="Perempuan">Perempuan</option>
 							</select>
 						</div>
+
 						<div class="form-group">
 							<label for="">Fakultas </label>
 							<input type="text" class="form-control" data-placeholder="Fakultas" name="fakultas" required>
 						</div>
+
 						<div class="form-group">
 							<label for="">Program Studi</label>
 							<input type="text" class="form-control" data-placeholder="jurusan" name="program_studi" required>
 						</div>
+
 						<div class="form-group">
 							<label for="">Semester</label>
 							<select class="form-control chosen" data-placeholder="Pilih Semester" name="semester">
@@ -124,10 +130,12 @@ if(isset($_POST['simpan'])){
 								<option value="8">8</option>
 							</select>
 						</div>
+
 						<div class="form-group">
 							<label for="">IPK</label>
 							<input type="number" class="form-control" name="ipk" value="1.00" step="0.01" min="1" max="4" required>
 						</div>
+
 						<div class="form-group">
 							<label for="">Golongan Darah:</label>
 							<select class="form-control chosen" data-placeholder="Pilih Golongan Darah" name="gol_dar">
@@ -138,31 +146,36 @@ if(isset($_POST['simpan'])){
 								<option value="AB">AB</option>
 							</select>
 						</div>
+
 						<div class="form-group">
 							<label for="">Agama:</label>
 							<select class="form-control chosen" data-placeholder="Pilih agama" name="agama">
 								<option value=""></option>
 								<option value="Islam">Islam</option>
 								<option value="Kristen">Kristen</option>
-								<option value="Protestan">Protestan</option>
-								<option value="hindu">hindu</option>
+								<option value="Katolik">Katolik</option>
+								<option value="Hindu">Hindu</option>
 								<option value="Budha">Budha</option>
-								<option value="konghuchu">konghuchu</option>
-								<option value="lainya">lainya</option>
+								<option value="Konghuchu">Konghuchu</option>
+								<option value="Lainnya">Lainnya</option>
 							</select>
 						</div>
+
 						<div class="form-group">
 							<label for="">No Handphone</label>
 							<input type="number" class="form-control" value= "<?php echo $row['telp']; ?>" name="no_hp" readonly>
 						</div>
+
 						<div class="form-group">
 							<label for="">Email</label>
 							<input type="text" class="form-control" name="email" required>
 						</div>
+
 						<div class="form-group">
 							<label for="">Alamat</label>
 							<input type="text" class="form-control" value= "<?php echo $row['alamat']; ?>" name="alamat"  readonly>
 						</div>
+
 						<div class="form-group">
 							<label for="">Pendapatan Orangtua</label>
 							<input type="number" class="form-control" name="pendapatan" min="0" max="9999999999" required>

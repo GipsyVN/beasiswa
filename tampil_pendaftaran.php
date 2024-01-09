@@ -25,7 +25,7 @@
 					$sql = "SELECT pendaftaran.iddaftar,pendaftaran.tgldaftar,pendaftaran.tahun,pendaftaran.nim,mahasiswa.nama_mahasiswa,pendaftaran.pendapatan_ortu,pendaftaran.ipk,pendaftaran.jml_saudara FROM mahasiswa INNER JOIN pendaftaran ON mahasiswa.nim = pendaftaran.nim ORDER BY iddaftar ASC";
 				}else{
 					$nim = $_SESSION['username'];
-					$sql = "SELECT pendaftaran.iddaftar,pendaftaran.tgldaftar,pendaftaran.tahun,pendaftaran.nim,mahasiswa.nama_mahasiswa,pendaftaran.pendapatan_ortu,pendaftaran.ipk,pendaftaran.jml_saudara FROM mahasiswa INNER JOIN pendaftaran ON mahasiswa.nim = pendaftaran.nim WHERE pendaftaran.nim = '$nim' ORDER BY iddaftar ASC";
+					$sql = "SELECT pendaftaran.iddaftar,pendaftaran.tgldaftar,pendaftaran.tahun,pendaftaran.nim,mahasiswa.nama_mahasiswa,pendaftaran.pendapatan_ortu,pendaftaran.ipk,pendaftaran.jml_saudara,pendaftaran.verifikasi FROM mahasiswa INNER JOIN pendaftaran ON mahasiswa.nim = pendaftaran.nim WHERE pendaftaran.nim = '$nim' ORDER BY iddaftar ASC";
 				}
 				$result = $conn->query($sql);
 				$i = 1;
@@ -47,14 +47,25 @@
 								<a class="btn btn-warning" href="?page=pendaftaran&action=verif&id=<?php echo $row['iddaftar']; ?>">
 									<span class="fas fa-edit"></span>
 								</a>
+								<a onclick="return confirm('Yakin menghapus data ini ?')" class="btn btn-danger" href="?page=pendaftaran&action=hapus&id=<?php echo $row['iddaftar']; ?>">
+									<span class="fas fa-times"></span>
 							<?php }else{ ?>
-								<a class="btn btn-warning" href="?page=pendaftaran&action=update&id=<?php echo $row['iddaftar']; ?>">
-									<span class="fas fa-edit"></span>
-								</a>
+								<?php if($row['verifikasi'] == "Terverifikasi"){ ?>
+									<a class="btn btn-warning" disabled>
+										<span class="fas fa-edit"></span>
+									</a>
+									<a class="btn btn-danger" disabled>
+										<span class="fas fa-times"></span>
+									</a>
+								<?php }else{ ?>
+									<a class="btn btn-warning" href="?page=pendaftaran&action=update&id=<?php echo $row['iddaftar']; ?>">
+										<span class="fas fa-edit"></span>
+									</a>
+									<a onclick="return confirm('Yakin menghapus data ini ?')" class="btn btn-danger" href="?page=pendaftaran&action=hapus&id=<?php echo $row['iddaftar']; ?>">
+										<span class="fas fa-times"></span>
+									</a>
+								<?php } ?>	
 							<?php } ?>
-							<a onclick="return confirm('Yakin menghapus data ini ?')" class="btn btn-danger" href="?page=pendaftaran&action=hapus&id=<?php echo $row['iddaftar']; ?>">
-								<span class="fas fa-times"></span>
-							</a>
 						</td>
 					</tr>
 					<?php

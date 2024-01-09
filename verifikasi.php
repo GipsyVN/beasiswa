@@ -1,11 +1,15 @@
 <?php
 $id=$_GET['id'];
 
-if(isset($_POST['verif'])){
+if(isset($_POST['verif']) || isset($_POST['batal_verif'])){
 
 	global $id;
-	$verif = "Terverifikasi";
-
+	if (isset($_POST['verif'])) {
+		$verif = "Terverifikasi";
+	} else {
+		$verif = "Belum";
+	}
+	
     // proses update
 	$sql = "UPDATE pendaftaran SET verifikasi = '$verif' WHERE iddaftar='$id'";
 	if ($conn->query($sql) === TRUE) {
@@ -113,6 +117,7 @@ $row = $result->fetch_assoc();
 						</div>
 
 						<input class="btn btn-primary" type="submit" name="verif" value="Verifikasi">
+						<input class="btn btn-danger" type="submit" name="batal_verif" value="Batalkan Verifikasi">
 						<a class="btn btn-danger" href="?page=pendaftaran">Batal</a>
 
 					</div>
