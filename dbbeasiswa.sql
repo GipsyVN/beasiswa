@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Jan 2024 pada 11.05
+-- Waktu pembuatan: 14 Jan 2024 pada 11.03
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.0.30
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `dbbeasiswa`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `acc`
+--
+
+CREATE TABLE `acc` (
+  `idacc` int(11) NOT NULL,
+  `iddaftar` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `acc`
+--
+
+INSERT INTO `acc` (`idacc`, `iddaftar`) VALUES
+(13, 12),
+(14, 15),
+(15, 16),
+(16, 14),
+(17, 17),
+(18, 12);
 
 -- --------------------------------------------------------
 
@@ -41,12 +64,16 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id`, `nim`, `nama_mahasiswa`, `tanggal_lahir`, `alamat`, `telp`) VALUES
-(6, '123', 'Asd', '2024-01-03', 'asasd', '13123'),
-(7, '1231', 'asd', '2024-01-02', 'asdasd', '081234567890'),
-(8, '202287001', 'asdf', '2024-01-01', 'AADSASD', '2313213'),
-(9, '202287004', 'asd', '2024-01-01', 'dsadad', '123'),
-(10, '202287005', 'tur', '2024-01-01', 'asdasd', '12312'),
-(11, '202287006', 'asdf', '2024-01-01', 'asdad', '12121');
+(12, '202287001', 'A', '2024-01-01', 'asdf', '1234'),
+(13, '202287002', 'B', '2024-01-01', 'asdf', '1234'),
+(14, '202287003', 'c', '2024-01-01', 'asdf', '1234'),
+(15, '202287004', 'd', '2024-01-01', 'asdf', '1234'),
+(16, '202287005', 'e', '2024-01-01', 'asdf', '1234'),
+(17, '202287006', 'f', '2024-01-01', 'asdf', '1234'),
+(18, '202287007', 'g', '2024-01-01', 'asdf', '1234'),
+(19, '202287008', 'h', '2024-01-01', 'asdf', '1234'),
+(20, '202287009', 'i', '2024-01-01', 'asdf', '1234'),
+(21, '202287010', 'j', '2024-01-01', 'asdf', '1234');
 
 -- --------------------------------------------------------
 
@@ -73,7 +100,7 @@ CREATE TABLE `pendaftaran` (
   `pendapatan_ortu` int(11) DEFAULT NULL,
   `ipk` decimal(3,2) DEFAULT NULL,
   `jml_saudara` int(11) DEFAULT NULL,
-  `verifikasi` varchar(10) NOT NULL
+  `verifikasi` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 --
@@ -81,12 +108,11 @@ CREATE TABLE `pendaftaran` (
 --
 
 INSERT INTO `pendaftaran` (`iddaftar`, `jenis_beasiswa`, `tgldaftar`, `tahun`, `nim`, `nik`, `no_kk`, `tempat_lahir`, `jenis_kelamin`, `fakultas`, `program_studi`, `semester`, `golongan_darah`, `agama`, `email`, `pendapatan_ortu`, `ipk`, `jml_saudara`, `verifikasi`) VALUES
-(2, '', '2023-12-14', '2023', '202287011', 0, 0, '', '', '', '', 0, '', '', '', 1231232, 4.00, 1, ''),
-(4, '', '2023-12-11', '2021', '202287019', 0, 0, '', '', '', '', 0, '', '', '', 12123, 3.89, 3, ''),
-(6, '', '2023-12-12', '2023', '202287012', 0, 0, '', '', '', '', 0, '', '', '', 12313, 2.00, 2, ''),
-(9, 'Prestasi', '2024-01-07', '2024', '202287004', 12123, 123123, 'asda', 'Laki-Laki', 'asdds', 'asdads', 2, 'B', 'lainya', 'sdasd', 122312312, 1.00, 1, 'belum'),
-(10, 'Kurang_mampu', '2024-01-07', '2024', '202287004', 1212, 12312, 'sdadas', 'Perempuan', '12asd', 'adsda', 5, 'O', 'Kristen', 'haa.444.444.haa@gmail.com', 123132313, 1.00, 1, 'Belum'),
-(11, 'Kurang_mampu', '2024-01-07', '2024', '202287005', 123123, 12123, 'asdads', 'Perempuan', 'asdaf', 'asdas', 1, 'O', 'konghuchu', 'kontolmojang5@gmail.com', 1213, 1.00, 1, 'Belum');
+(12, 'Prestasi', '2024-01-14', '2024', '202287001', 1234, 1234, 'asf', 'Laki-Laki', 'asdf', 'asdf', 2, 'O', 'Lainnya', 'asddsa', 500000, 3.75, 2, 'Terverifikasi'),
+(14, 'Tugas Akhir', '2024-01-14', '2024', '202287003', 123, 123, 'asda', 'Perempuan', 'asd', 'asdsd', 7, 'O', 'Lainnya', 'ayam@gmail.com', 1000000, 3.50, 1, 'Terverifikasi'),
+(15, 'Prestasi', '2024-01-14', '2024', '202287004', 123, 123, 'asfad', 'Laki-Laki', 'ASDFGHJK', 'asdas', 5, 'O', 'Lainnya', 'itik@gmail.com', 700000, 3.50, 3, 'Terverifikasi'),
+(16, 'Kurang Mampu', '2024-01-14', '2024', '202287005', 1232, 1234, 'asfad', 'Perempuan', 'ASDFGHJK', 'asdas', 2, 'A', 'Budha', 'asdfghj@gmail.com', 150000, 2.00, 3, 'Terverifikasi'),
+(17, 'Tugas Akhir', '2024-01-14', '2024', '202287006', 1234, 1234, 'asdads', 'Perempuan', 'dssf', 'dsfs', 6, 'B', 'Islam', 'asdfghj@gmail.com', 600000, 1.00, 2, 'Terverifikasi');
 
 -- --------------------------------------------------------
 
@@ -108,9 +134,12 @@ CREATE TABLE `perangkingan` (
 --
 
 INSERT INTO `perangkingan` (`idperangkingan`, `iddaftar`, `n_pendapatan`, `n_ipk`, `n_saudara`, `preferensi`) VALUES
-(11, 4, 1.000, 1.000, 1.000, 1.000),
-(12, 2, 0.010, 1.000, 0.500, 0.405),
-(13, 6, 1.000, 0.500, 1.000, 0.850);
+(29, 13, 1.000, 1.000, 1.000, 1.000),
+(87, 16, 1.000, 1.000, 1.000, 1.000),
+(90, 14, 0.600, 1.000, 0.500, 0.770),
+(91, 17, 1.000, 0.286, 1.000, 0.643),
+(104, 12, 1.000, 1.000, 0.667, 0.933),
+(105, 15, 0.714, 0.933, 1.000, 0.903);
 
 -- --------------------------------------------------------
 
@@ -131,17 +160,26 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `pass`, `level`) VALUES
 (3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin'),
-(4, 'Mahasiswa', '5787be38ee03a9ae5360f54d9026465f', 'Mahasiswa'),
-(5, '202287002', '8696f8389f115a3bbb8208946b990cc1', 'Mahasiswa'),
-(6, '202287002', '9f544d24208a0d7f41079a4f2ef5a573', 'Mahasiswa'),
-(7, '202287003', '8696f8389f115a3bbb8208946b990cc1', 'Mahasiswa'),
-(8, '202287004', '8696f8389f115a3bbb8208946b990cc1', 'Mahasiswa'),
-(9, '202287005', '8696f8389f115a3bbb8208946b990cc1', 'Mahasiswa'),
-(10, '202287006', '8696f8389f115a3bbb8208946b990cc1', 'Mahasiswa');
+(11, '202287001', '8696f8389f115a3bbb8208946b990cc1', 'Mahasiswa'),
+(12, '202287002', '8696f8389f115a3bbb8208946b990cc1', 'Mahasiswa'),
+(13, '202287003', '8696f8389f115a3bbb8208946b990cc1', 'Mahasiswa'),
+(14, '202287004', '8696f8389f115a3bbb8208946b990cc1', 'Mahasiswa'),
+(15, '202287005', '8696f8389f115a3bbb8208946b990cc1', 'Mahasiswa'),
+(16, '202287006', '8696f8389f115a3bbb8208946b990cc1', 'Mahasiswa'),
+(17, '202287007', '8696f8389f115a3bbb8208946b990cc1', 'Mahasiswa'),
+(18, '202287008', '8696f8389f115a3bbb8208946b990cc1', 'Mahasiswa'),
+(19, '202287009', '8696f8389f115a3bbb8208946b990cc1', 'Mahasiswa'),
+(20, '202287010', '8696f8389f115a3bbb8208946b990cc1', 'Mahasiswa');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `acc`
+--
+ALTER TABLE `acc`
+  ADD PRIMARY KEY (`idacc`);
 
 --
 -- Indeks untuk tabel `mahasiswa`
@@ -173,28 +211,34 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `acc`
+--
+ALTER TABLE `acc`
+  MODIFY `idacc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
 -- AUTO_INCREMENT untuk tabel `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
-  MODIFY `iddaftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `iddaftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `perangkingan`
 --
 ALTER TABLE `perangkingan`
-  MODIFY `idperangkingan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idperangkingan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

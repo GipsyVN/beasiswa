@@ -22,7 +22,7 @@ require "config.php";
     <!-- Cek Status Login -->
     <?php 
     if($_SESSION['status'] != "y"){
-        header("Location:login1.php");
+        header("Location:login.php");
     }
     ?>
 
@@ -36,8 +36,9 @@ require "config.php";
             <?php if($_SESSION['level'] == "Admin"): ?>
                <li class="nav-item active"><a class="nav-link" href="?page=user"><i class="fas fa-user"></i> User </a></li>
                <li class="nav-item active"><a class="nav-link" href="?page=mahasiswa"><i class="fas fa-user-graduate"></i> Mahasiswa </a></li>
-               <li class="nav-item active"><a class="nav-link" href="?page=perangkingan&thn="><i class="fas fa-book-reader"></i> Perengkingan </a></li>
-           <?php endif ?>
+               <li class="nav-item active"><a class="nav-link" href="?page=perangkingan&jenis="><i class="fas fa-book-reader"></i> Perengkingan </a></li>
+               <li class="nav-item active"><a class="nav-link" href="?page=acc"><i class="fas fa-awardfas fa-award"></i> Penerima </a></li>
+            <?php endif ?>
 
            <li class="nav-item active"><a class="nav-link" href="?page=logout"><i class="fas fa-door-closed"></i> Logout </a></li>
        </ul>
@@ -54,41 +55,53 @@ require "config.php";
         include "welcome.php";
     }elseif ($page=="mahasiswa"){
         if ($action==""){
-            include "tampil_mahasiswa.php";
+            include "mahasiswa/tampil_mahasiswa.php";
         }elseif($action == "tambah"){
-            include "tambah_mahasiswa.php";
+            include "mahasiswa/tambah_mahasiswa.php";
         }elseif($action == "update"){
-            include "update_mahasiswa.php";
+            include "mahasiswa/update_mahasiswa.php";
         }
         else{
-            include "hapus_mahasiswa.php";
+            include "mahasiswa/hapus_mahasiswa.php";
         }
     }elseif ($page=="pendaftaran"){
         if ($action==""){
-            include "tampil_pendaftaran.php";
+            include "pendaftaran/tampil_pendaftaran.php";
         }elseif($action == "tambah"){
-            include "tambah_pendaftaran.php";
+            include "pendaftaran/tambah_pendaftaran.php";
         }elseif($action == "update"){
-            include "update_pendaftaran.php";
+            include "pendaftaran/update_pendaftaran.php";
         }elseif($action == "verif"){
-            include "verifikasi.php";
+            include "pendaftaran/verifikasi.php";
         }else{
-            include "hapus_pendaftaran.php";
+            include "pendaftaran/hapus_pendaftaran.php";
         }
     }elseif ($page=="perangkingan"){
         if ($action==""){
-            include "perangkingan.php";
+            include "perangkingan/perangkingan.php";
+        }elseif($action=="tambah"){
+            include "perangkingan/tambah_acc.php";
         }
     }elseif ($page=="user"){
         if ($action==""){
-            include "tampil_user.php";
+            include "user/tampil_user.php";
         }elseif($action == "tambah"){
-            include "tambah_user.php";
+            include "user/tambah_user.php";
         }elseif($action == "update"){
-            include "update_user.php";
+            include "user/update_user.php";
         }
         else{
-            include "hapus_user.php";
+            include "user/hapus_user.php";
+        }
+    }elseif($page=="acc"){
+        if ($action==""){
+            include "acc/tampil_acc.php";
+        }elseif ($action=="terima"){
+            include "acc/data_penerima.php";
+        }elseif ($action=="hapus"){
+            include "acc/hapus_acc.php";
+        }elseif ($action=="hapus_data"){
+            include "acc/hapus_data_acc.php";
         }
     }else{
         if ($action==""){

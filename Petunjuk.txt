@@ -1,0 +1,10 @@
+Halaman login Membutuhkan Internet agar ditampilkan dengan sempurna
+
+Buat database dengan nama "dbbeasiswa" lalu import dbbeasiswa.sql
+
+Akun Mahasiswa otomatis dibuat jika menambahkan data mahasiswa di menu Tambah Mahasiswa dengan format:
+Username = nim
+Password = Tanggal Lahir (yyyymmdd)
+
+Alur Pendaftaran Beasiswa
+Mahasiswa Mendaftar (Menu Pendaftaran) -> Admin Review Data & Verifikasi -> Admin Melakukan Perangkingan Sesuai Jenis Beasiswa -> Tambah Pemerima (Melalui Kolom Aksi) -> Pemerima Final

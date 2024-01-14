@@ -1,4 +1,3 @@
-<!-- Letakkan proses login disini -->
 <?php
 session_start();
 require "config.php";
@@ -26,59 +25,63 @@ if(isset($_POST["submit"])){
 $conn->close();
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>LOGIN</title>
-
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Login</title>
 </head>
-<body>
 
-    <!-- validasi login gagal, letakkan disini -->
+<body>
+    <section>
+        <form method="POST">
+            <h1>Login</h1>
+            <div class="inputbox">
+                <ion-icon name="person-circle-outline"></ion-icon>
+                <input type="username" name="username" autocomplete="off" required>
+                <label>Username</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="lock-closed-outline" id="passwordBox"></ion-icon>
+                <input type="password" name="pass" id="password" autocomplete="off" required>
+                <label>Password</label>
+            </div>
+
+            <button type="submit" name="submit" value="Login">Log in</button>
+        </form>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script type="text/javascript">
+        const passwordInput = document.getElementById('password');
+        const showPasswordIcon = document.getElementById('passwordBox');
+
+        showPasswordIcon.addEventListener('click', () => {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        });
+    </script>
+
+
+    <!-- validasi login gagal -->
     <?php 
     if(isset($_GET['msg'])){
         if($_GET['msg'] == "n"){
             ?>
-            <div class="alert alert-danger" align="center">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Login Gagal</strong>
-            </div>
+            <script type="text/javascript">
+                alert("Username atau Password Anda Salah");
+            </script>
             <?php
         }       
     }
     ?>
-
-
-    <div class="container-fluid" style="margin-top:150px">
-        <div class="row">
-            <div class="col-lg-4 offset-lg-4">
-                <form method="POST">
-                    <div class="card border-dark">
-                        <div class="card-header bg-info text-light border-dark">
-                            <strong>LOGIN</strong>
-                        </div>
-                        <div class="card-body border">
-                            <div class="form-group">
-                                <label for="">User Name</label>
-                                <input type="text" class="form-control" name="username" autocomplete="off" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Password</label>
-                                <input type="password" class="form-control" name="pass" autocomplete="off" required>
-                            </div>
-                            <input type="submit" class="btn btn-primary" name="submit" value="Login">
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <script src="assets/js/jquery-3.7.0.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
 </body>
+
 </html>
