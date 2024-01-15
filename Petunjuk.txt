@@ -6,5 +6,13 @@ Akun Mahasiswa otomatis dibuat jika menambahkan data mahasiswa di menu Tambah Ma
 Username = nim
 Password = Tanggal Lahir (yyyymmdd)
 
+Akun Admin:
+username: admin
+pass: admin
+
+Akun Mahasiswa:
+username: 202287001 - 202287009
+pass: 20240101
+
 Alur Pendaftaran Beasiswa
 Mahasiswa Mendaftar (Menu Pendaftaran) -> Admin Review Data & Verifikasi -> Admin Melakukan Perangkingan Sesuai Jenis Beasiswa -> Tambah Pemerima (Melalui Kolom Aksi) -> Pemerima Final
