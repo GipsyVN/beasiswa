@@ -18,7 +18,7 @@ if(isset($_POST['verif']) || isset($_POST['batal_verif'])){
 }
 
 // Autocompletes
-$sql = "SELECT pendaftaran.jenis_beasiswa,pendaftaran.tahun,mahasiswa.nama_mahasiswa,pendaftaran.nim,pendaftaran.nik,pendaftaran.no_kk,pendaftaran.tempat_lahir,mahasiswa.tanggal_lahir,pendaftaran.jenis_kelamin,pendaftaran.fakultas,pendaftaran.program_studi,pendaftaran.semester,pendaftaran.ipk,pendaftaran.golongan_darah,pendaftaran.agama,mahasiswa.telp,pendaftaran.email,mahasiswa.alamat,pendaftaran.pendapatan_ortu,pendaftaran.jml_saudara FROM mahasiswa INNER JOIN pendaftaran ON mahasiswa.nim = pendaftaran.nim ORDER BY iddaftar ASC";
+$sql = "SELECT pendaftaran.iddaftar,pendaftaran.jenis_beasiswa,pendaftaran.tahun,mahasiswa.nama_mahasiswa,pendaftaran.nim,pendaftaran.nik,pendaftaran.no_kk,pendaftaran.tempat_lahir,mahasiswa.tanggal_lahir,pendaftaran.jenis_kelamin,pendaftaran.fakultas,pendaftaran.program_studi,pendaftaran.semester,pendaftaran.ipk,pendaftaran.golongan_darah,pendaftaran.agama,mahasiswa.telp,pendaftaran.email,mahasiswa.alamat,pendaftaran.pendapatan_ortu,pendaftaran.jml_saudara FROM mahasiswa INNER JOIN pendaftaran ON mahasiswa.nim = pendaftaran.nim WHERE iddaftar='$id'";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 ?>
